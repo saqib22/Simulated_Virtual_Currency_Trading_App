@@ -3,8 +3,8 @@ from django.contrib import messages
 import bcrypt
 from models import User
 
-def index(request):
-    return render(request, 'register/index.html')
+def signup(request):
+    return render(request, 'register/signup.html')
 
 def register(request):
     errors = User.objects.validator(request.POST)
@@ -20,12 +20,14 @@ def register(request):
     return redirect('/success')
 
 def login(request):
-    if (User.objects.filter(email=request.POST['login_email']).exists()):
-        user = User.objects.filter(email=request.POST['login_email'])[0]
-        if (bcrypt.checkpw(request.POST['login_password'].encode(), user.password.encode())):
-            request.session['id'] = user.id
-            return redirect('/success')
-    return redirect('/')
+    if (User.objects.filter(name=request.POST['name'])):
+        user = User.objects.filter(name=request.POST['name'])[0]
+        request.session['id'] = user.id
+        return redirect('/success')
+    user = User.objects.create(name = request.POST['name'], deposit_amount = int(request.POST['amount']))
+    user.save()
+    request.session['id'] = user.id
+    return redirect('/success')
 
 def success(request):
     user = User.objects.get(id=request.session['id'])

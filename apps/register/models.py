@@ -21,10 +21,8 @@ class UserManager(models.Manager):
         return errors
 
 class User(models.Model):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
-    email = models.CharField(max_length=255)
-    password = models.CharField(max_length=255)
+
+    name = models.CharField(max_length=255)
+    deposit_amount = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
-    objects = UserManager()

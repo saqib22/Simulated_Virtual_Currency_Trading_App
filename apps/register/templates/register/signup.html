@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-4">
+            <!--<div class="col-4">
                 <div class="card">
                     <h4 class="card-header text-center">Register</h4>
                     <div class="card-block">
@@ -80,20 +80,20 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <div class="col-4">
                 <div class="card">
-                    <h4 class="card-header text-center">Login</h4>
+                    <h4 class="card-header text-center">Sign Up</h4>
                     <div class="card-block">
                         <form method="post" action="/login">
                             {% csrf_token %}
                             <div class="form-group">
-                                <label>Email</label>
-                                <input name="login_email" type="text" class="form-control">
+                                <label>Username</label>
+                                <input name="name" type="text" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label>Password</label>
-                                <input name="login_password" type="password" class="form-control">
+                                <label>Deposit Amount</label>
+                                <input name="amount" type="number" class="form-control">
                             </div>
                             <div class="mx-auto text-center">
                                 <input type="submit" value="Login" class="btn btn-primary">
@@ -104,7 +104,6 @@
             </div>
         </div>
     </div>
-    </script>
 </body>
 
 </html>
