@@ -21,7 +21,6 @@ class UserManager(models.Manager):
         return errors
 
 class User(models.Model):
-
     name = models.CharField(max_length=255)
     deposit_amount = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add = True)

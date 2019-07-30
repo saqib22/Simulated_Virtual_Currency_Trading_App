@@ -8,3 +8,11 @@ ul {
     padding-left: 0px !important;
     list-style-type: none;
 }
+
+.alert-heading{
+	text-align: center;
+}
+
+.account-info{
+	padding-top: 20px;
+}

@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 	<title>Success</title>
-    <meta charset="utf-8">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'register/style.css' %}">
+	<meta charset="utf-8">
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'register/style.css' %}">
 	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -13,8 +13,21 @@
 		<div class="row justify-content-center">
 			<div class="col-8">
 				<div class="alert alert-success" role="alert'">
-					<h4 class="alert-heading">Success</h4>
-                        <p>Welcome, <strong>{{user.first_name}} {{user.last_name}}</strong></p>
+					<h4 class="alert-heading">Account Information</h4>
+						<!--<p>Welcome, <strong>{{user.first_name}} {{user.last_name}}</strong></p>-->
+						
+						<div class="row account-info">
+						    <div class="col-sm-6">
+						    	<p>Account Balance:</p>
+						    	<p>Amount of virtual currency:<p>
+						    	<p>Equity:</p>
+						    </div>
+						    <div class="col-sm-6">
+						    	<p>Sed ut perspiciatis...</p>
+						    	<p>Sed ut perspiciatis...</p>
+						    	<p>Sed ut perspiciatis...</p>
+						   	</div>
+						</div>
 				</div>
 			</div>
 		</div>
