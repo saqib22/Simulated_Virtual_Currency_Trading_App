@@ -30,7 +30,9 @@ def login(request):
 
 def success(request):
     user = models.User.objects.get(id=request.session['id'])
+    currency = models.Currency.objects.all()
     context = {
-        "user": user
+        "user": user,
+        "currency" : currency
     }
     return render(request, 'register/success.html', context)

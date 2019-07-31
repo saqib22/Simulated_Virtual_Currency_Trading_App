@@ -14,8 +14,6 @@
 			<div class="col-8">
 				<div class="alert alert-success" role="alert'">
 					<h4 class="alert-heading">Account Information</h4>
-						<!--<p>Welcome, <strong>{{user.first_name}} {{user.last_name}}</strong></p>-->
-						
 						<div class="row account-info">
 						    <div class="col-sm-6">
 						    	<p>Account Balance:</p>
@@ -23,10 +21,31 @@
 						    	<p>Equity:</p>
 						    </div>
 						    <div class="col-sm-6">
+						    	<p>{{user.deposit_amount}}</p>
 						    	<p>Sed ut perspiciatis...</p>
-						    	<p>Sed ut perspiciatis...</p>
-						    	<p>Sed ut perspiciatis...</p>
+						    	<p>{{ currency.value }}</p>
 						   	</div>
+						</div>
+				</div>
+
+				<div class="alert alert-success" role="alert'">
+					<h4 class="alert-heading">Price of Virtual Currency</h4>
+						<div class="row account-info">
+						    <div class="col-sm-6">
+						    	<p>Value:</p>
+						    </div>
+						    <div class="col-sm-6">
+						    	<p>{{currenct.value}}</p>
+						   	</div>
+						</div>
+				</div>
+
+				<div class="alert alert-success" role="alert'">	
+						<div class="row account-info d-flex justify-content-center">
+						    <div class="btn-group btn-group-lg">
+							 	<button type="button" class="btn btn-success ">Buy</button>
+								<button type="button" class="btn btn-danger">Sell</button>
+							</div>
 						</div>
 				</div>
 			</div>
