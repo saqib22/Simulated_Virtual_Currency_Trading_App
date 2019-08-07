@@ -30,7 +30,7 @@ def login(request):
 
 def success(request):
     user = models.User.objects.get(id=request.session['id'])
-    currency = models.VGC.objects.all()
+    currency = models.VGC.objects.get(pk=1)
     context = {
         "user": user,
         "currency" : currency
