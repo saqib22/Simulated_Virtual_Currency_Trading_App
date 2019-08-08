@@ -6,7 +6,30 @@
 	{% load static %}
 	<link rel="stylesheet" href="{% static 'register/style.css' %}">
 	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('input[type="radio"][name="method"]').change(function(){
+				var radioValue = $("input[name='method']:checked").val();
+				if(radioValue == "limit"){
+					$(".priceBlock").show()
+				}
+				if(radioValue == "market"){
+					$(".priceBlock").hide()
+				}
+			})
+		});
+	</script>
+
+
 </head>
 <body>
 	<div class="container">
@@ -43,13 +66,57 @@
 				<div class="alert alert-success" role="alert'">	
 						<div class="row account-info d-flex justify-content-center">
 						    <div class="btn-group btn-group-lg">
-							 	<button type="button" class="btn btn-success ">Buy</button>
+							 	<button type="button" data-toggle="modal" data-target="#buyModal" class="btn btn-success ">Buy</button>
 								<button type="button" class="btn btn-danger">Sell</button>
 							</div>
 						</div>
 				</div>
 			</div>
 		</div>
+
+			<!-- The Modal -->
+		<div class="modal" id="buyModal">
+		    <div class="modal-dialog">
+		    	<div class="modal-content">
+			        <!-- Modal Header -->
+			        <div class="modal-header">
+			        	<h4 class="modal-title">Select Method</h4>
+			        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+			        </div>
+			        
+			        <!-- Modal body -->
+			        <div class="modal-body">
+			        	<form action="">
+							<div class="form-group">
+							    <label for="amount">Amount</label>
+							    <input type="number" class="form-control" id="amount">
+							</div>
+							<div class="radio">
+								<label><input type="radio" name="method" value="market">Market</label>
+							</div>
+							<div class="radio">
+								<label><input type="radio" name="method" value="limit">Limit</label>
+							</div>
+
+							<div class="form-group priceBlock" style="display: none;">
+							    <label for="amount">Price per unit of currency: </label>
+							    <input type="number" class="form-control" id="price">
+							</div>
+
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+			        </div>
+			        
+			        <!-- Modal footer -->
+			        <div class="modal-footer">
+			        	<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+			        </div>
+		      	</div>
+		    </div>
+		</div>
+
+
+
 	</div>
 </body>
 </html>
