@@ -26,6 +26,16 @@
 					$(".priceBlock").hide()
 				}
 			})
+			
+			$('input[type="radio"][name="smethod"]').change(function(){
+				var radioValue = $("input[name='smethod']:checked").val();
+				if(radioValue == "slimit"){
+					$(".spriceBlock").show()
+				}
+				if(radioValue == "smarket"){
+					$(".spriceBlock").hide()
+				}
+			})
 		});
 	</script>
 
@@ -53,28 +63,36 @@
 
 				<div class="alert alert-success" role="alert'">
 					<h4 class="alert-heading">VGC</h4>
-						<div class="row account-info">
-						    <div class="col-sm-6">
-						    	<p>Price of currency:</p>
-						    </div>
-						    <div class="col-sm-6">
-						    	<p>${{currency.price}}</p>
-						   	</div>
-						</div>
+					<div class="row currency">
+					    <div class="col-sm-6">
+					    	<p>Amount of currency:</p>
+					    </div>
+					    <div class="col-sm-6">
+					    	<p>${{currency.amount}}</p>
+					   	</div>
+					</div>
+					<div class="row currency">
+					    <div class="col-sm-6">
+					    	<p>Price of currency:</p>
+					    </div>
+					    <div class="col-sm-6">
+					    	<p>${{currency.price}}</p>
+					   	</div>
+					</div>
 				</div>
 
 				<div class="alert alert-success" role="alert'">	
-						<div class="row account-info d-flex justify-content-center">
-						    <div class="btn-group btn-group-lg">
-							 	<button type="button" data-toggle="modal" data-target="#buyModal" class="btn btn-success ">Buy</button>
-								<button type="button" class="btn btn-danger">Sell</button>
-							</div>
+					<div class="row account-info d-flex justify-content-center">
+					    <div class="btn-group btn-group-lg">
+						 	<button type="button" data-toggle="modal" data-target="#buyModal" class="btn btn-success ">Buy</button>
+							<button type="button" data-toggle="modal" data-target="#sellModal" class="btn btn-danger">Sell</button>
 						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 
-			<!-- The Modal -->
+		<!-- Buy Modal -->
 		<div class="modal" id="buyModal">
 		    <div class="modal-dialog">
 		    	<div class="modal-content">
@@ -86,10 +104,11 @@
 			        
 			        <!-- Modal body -->
 			        <div class="modal-body">
-			        	<form action="">
+			        	<form method="post" action="/buyTrans">
+			        		{% csrf_token %}
 							<div class="form-group">
 							    <label for="amount">Amount</label>
-							    <input type="number" class="form-control" id="amount">
+							    <input name='amount' step="0.01" type="number" class="form-control" id="amount">
 							</div>
 							<div class="radio">
 								<label><input type="radio" name="method" value="market">Market</label>
@@ -100,7 +119,7 @@
 
 							<div class="form-group priceBlock" style="display: none;">
 							    <label for="amount">Price per unit of currency: </label>
-							    <input type="number" class="form-control" id="price">
+							    <input name="limitPrice" step="0.01" type="number" class="form-control" id="price">
 							</div>
 
 							<button type="submit" class="btn btn-primary">Submit</button>
@@ -114,6 +133,53 @@
 		      	</div>
 		    </div>
 		</div>
+
+		<!-- Sell Modal -->
+		<div class="modal" id="sellModal">
+		    <div class="modal-dialog">
+		    	<div class="modal-content">
+			        <!-- Modal Header -->
+			        <div class="modal-header">
+			        	<h4 class="modal-title">Select Method</h4>
+			        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+			        </div>
+			        
+			        <!-- Modal body -->
+			        <div class="modal-body">
+			        	<form method="post" action="/sellTrans">
+			        		{% csrf_token %}
+							<div class="form-group">
+							    <label for="amount">Amount</label>
+							    <input name='samount' step="0.01" type="number" class="form-control" id="amount">
+							</div>
+							<div class="radio">
+								<label><input type="radio" name="smethod" value="smarket">Market</label>
+							</div>
+							<div class="radio">
+								<label><input type="radio" name="smethod" value="slimit">Limit</label>
+							</div>
+
+							<div class="form-group spriceBlock" style="display: none;">
+							    <label for="amount">Price per unit of currency: </label>
+							    <input name="slimitPrice" step="0.01" type="number" class="form-control" id="price">
+							</div>
+
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+			        </div>
+			        
+			        <!-- Modal footer -->
+			        <div class="modal-footer">
+			        	<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+			        </div>
+		      	</div>
+		    </div>
+		</div>
+
+
+
+
+
 
 
 
